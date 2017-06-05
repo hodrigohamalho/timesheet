@@ -1,0 +1,14 @@
+## Timesheet Project
+
+### Timesheet UI 
+
+timesheet-ui is the frontend of this project, to run:
+
+	npm install 
+	npm start run
+
+### Timesheet API
+
+timesheet-api is the backend of this project, to run:
+
+	mvn spring-boot:run
