@@ -1,0 +1,16 @@
+{
+  "name": "timesheet",
+  "description": "Solution Architects Brazil Timesheet Helper Tolling",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hodrigohamalho/timesheet",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {    
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "angular-loader": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "html5-boilerplate": "^5.3.0",
+    "angular-patternfly": "^4.0.0"
+  }
+}
