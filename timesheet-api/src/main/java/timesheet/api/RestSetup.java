@@ -34,7 +34,7 @@ public class RestSetup extends RouteBuilder{
 			.contextPath(apiContext).apiContextPath("/api-doc")
 			.host(apiDocHost)
 			.port(apiDocPort)	
-			.apiProperty("api.title", "Order REST API")
+			.apiProperty("api.title", "Timesheet API")
 			.apiProperty("api.version", "1.0")
 			.apiProperty("cors", "true")
 			.apiContextRouteId("doc-api")
