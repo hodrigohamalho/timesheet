@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="page-header">
+        <h1>Timesheet</h1>
+        </div>
+
+        <div class="blank-slate-pf">
+        <div class="blank-slate-pf-icon">
+            <i class="pficon pficon-private"></i>
+        </div>
+        <p>Sincronize sua planilha google com a planilha de controle de horas dos Arquiteto de Soluções .</p>
+        <p><strong> How it works ? </strong></p>
+        <ul class="text-center">
+            <li>Sua agenda do google precisa estar preenchida neste formato.</li>
+            <li>Ao selecionar para importar, os eventos do calendário do google serão importados a partir da última linha disponível na planilha.</li>
+            <li> Easy, Peasy!</li>
+        </ul>
+        <div ng-show="!isUserSignedIn">
+            <p><strong> Pra começar, precisamos saber quem você é :) </strong></p>
+            <div class="blank-slate-pf-main-action">
+                <button class="btn btn-primary btn-lg">
+                Autenticar
+                </button>
+            </div>
+        </div>
+        <div ng-show="isUserSignedIn">
+            <div class="blank-slate-pf-main-action">
+                <a class="btn btn-primary btn-lg" href="/#!/timesheet">
+                Começar!
+                </a>
+            </div>
+        </div>
+
+        <gLogin></gLogin>
+    </div>
+
+</div>
