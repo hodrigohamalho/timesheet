@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-12">
-
         <div class="page-header">
         <h1>Timesheet</h1>
         </div>
@@ -10,10 +9,11 @@
             <i class="pficon pficon-private"></i>
         </div>
         <p>Sincronize sua planilha google com a planilha de controle de horas dos Arquiteto de Soluções .</p>
-        <p><strong> How it works ? </strong></p>
+        <p><strong>Como isso funciona ? </strong></p>
         <ul class="text-center">
-            <li>Sua agenda do google precisa estar preenchida neste formato.</li>
+            <li>Sua agenda do google precisa estar preenchida <a href="">neste formato.</a></li>
             <li>Ao selecionar para importar, os eventos do calendário do google serão importados a partir da última linha disponível na planilha.</li>
+            <li>As linhas que não estiverem no <a href="">formato</a> <strong>serão ignoradas.</strong></a>
             <li> Easy, Peasy!</li>
         </ul>
         <div ng-show="!isUserSignedIn">
@@ -34,5 +34,4 @@
 
         <gLogin></gLogin>
     </div>
-
 </div>
