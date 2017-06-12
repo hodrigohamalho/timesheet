@@ -16,12 +16,6 @@ endpoints:
   health:
     enabled: true
 
-spring:
-  # Spring JDBC configuration
-  datasource:
-    # Let Spring Boot auto-configure an embedded HSQL database
-    url:
-
 # The application configuration properties
 quickstart:
   generateOrderPeriod: 2s
@@ -32,3 +26,8 @@ apiContext: /api
 apidoc:
   host: 0.0.0.0
   port: 8080
+  
+accessToken: teste
+clientId: 483971248715-hva8n0p8q6d3qou8bftesds07do8h321.apps.googleusercontent.com
+clientSecret: ommited
+applicationName: timesheet/1.0
