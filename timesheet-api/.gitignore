@@ -1,5 +1,1 @@
-.settings
-.vscode
-target
-.project
-.classpath
+node_modules
