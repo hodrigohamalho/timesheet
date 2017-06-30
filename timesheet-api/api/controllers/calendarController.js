@@ -3,12 +3,11 @@ var request = require('request');
 var date = require('date-and-time');
 
 exports.listEvents = function(req, res) {
-  var token = req.header("token");
+  var token = req.header("Authorization").split(' ')[1]; // removes Bearer string
 
   // var timeMin = date.format(new Date(), 'YYYY-MM-DDTHH:mm:ssZ');
   date.locale('pt');
   console.log(date.parse('2015/01/02 23:14:05', 'YYYY/MM/DD HH:mm:ss'));
-  console.log("time maxx: "+timeMax);
 
   request({
     method: 'GET',
