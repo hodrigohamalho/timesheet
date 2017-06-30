@@ -28,24 +28,3 @@ angular.module('timesheet').controller('HowItWorksCtrl', function (CONFIG, GAuth
         });
     };
 });
-
-// https://www.googleapis.com/calendar/v3/calendars/rdasilva%40redhat.com/events?alwaysIncludeEmail=true&maxResults=250&orderBy=startTime&singleEvents=true&timeMin=2017-02-28T00%3A00%3A00Z&key=
-//   var currentUser = $cookies.get('userId');
-//   if(currentUser) {
-//     GData.setUserId(currentUser);
-//     GAuth.checkAuth().then(
-//         function (user) {
-//             $rootScope.user = user;
-//             GAuth.getToken().then(function(data){console.log(data);});
-//         },
-//         function(data) {
-//           // authenticate user at startup of the application
-//           $location.path('/login');
-//         }
-//     );
-//   }
-
-
-// GAuth.checkAuth().then(function (user) {
-//     console.log('\t ' + user.name + ' is already logged in!!!');
-// });

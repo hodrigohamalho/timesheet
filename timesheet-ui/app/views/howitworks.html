@@ -16,22 +16,22 @@
             <li>As linhas que não estiverem no <a href="">formato</a> <strong>serão ignoradas.</strong></a>
             <li> Easy, Peasy!</li>
         </ul>
+        
         <div ng-show="!isUserSignedIn">
-            <p><strong> Pra começar, precisamos saber quem você é :) </strong></p>
-            <div class="blank-slate-pf-main-action">
-                <button class="btn btn-primary btn-lg">
-                Autenticar
+            <button type="button" class="btn btn-primary btn-lg"
+                ng-click="handleAuthClick()"
+                ng-disabled="isUserSignedIn">
+                Login &nbsp;<span class="glyphicon glyphicon-ok"></span>
+            </button>
+            </div>
+            <div ng-show="isUserSignedIn">
+                <button type="button" class="btn btn-primary btn-lg"
+                    ng-click="handleSignoutClick()"
+                    ng-disabled="!isUserSignedIn">
+                    Logout  &nbsp;<span class="glyphicon glyphicon-log-out"></span>
                 </button>
             </div>
-        </div>
-        <div ng-show="isUserSignedIn">
-            <div class="blank-slate-pf-main-action">
-                <a class="btn btn-primary btn-lg" href="/#!/timesheet">
-                Começar!
-                </a>
-            </div>
-        </div>
 
-        <gLogin></gLogin>
+        
     </div>
 </div>

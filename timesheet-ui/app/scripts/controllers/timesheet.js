@@ -1,11 +1,13 @@
 angular.module('timesheet').controller('TimesheetCtrl', function ($rootScope, $scope, $http) {
     
-    $scope.$on('userChecked', function(){
-        $http({
-            method: 'GET',
-            url: 'http://localhost:8080/api/calendar',
-            params: {"email": $rootScope.user.email, "access_token": $rootScope.user.access_token, "maxResults": 3}
-        });
+    var token = localStorage.getItem('ts-user')['access_token'];
+
+    $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/calendar',
+        headers: {
+            'Authorization': 'Bearer '+token
+        }
     });
 
 });

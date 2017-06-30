@@ -4,7 +4,6 @@
 var app = angular.module('timesheet', [
   'ngResource',
   'ngRoute',
-  'ngCookies',
   'ngSanitize',
   'angular-google-gapi'
 ]);
@@ -16,6 +15,7 @@ app.config(function($routeProvider) {
   })
   .when('/howitworks', {
     templateUrl: 'views/howitworks.html',
+    controller: 'HowItWorksCtrl'
   })
   .when('/timesheet', {
     templateUrl: 'views/timesheet.html',
@@ -43,46 +43,34 @@ app.constant('CONFIG', {
   ]
 });
 
-app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location, $cookies) {
+app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location) {
   console.log('app.run()');
   $rootScope.gdata = GData;
-  //console.debug(CONFIG);
-  //console.debug($rootScope.gdata.getUserId());
-  //console.debug($rootScope.gdata.isLogin());
-
-  // GAuth.setDomain(CONFIG.AUTH_DOMAIN);
+  
   GAuth.setClient(CONFIG.CLIENT_ID);
   GAuth.setScope(CONFIG.SCOPES.join(' '));
-  GAuth.load();
-
-  var currentUser = $cookies.get('userId');
+  
+  var currentUser = localStorage.getItem('ts-user');
   if(currentUser) {
-    GData.setUserId(currentUser);
+    GData.setUserId(currentUser['id']);
     GAuth.checkAuth().then(
-        function (user) {
-            $rootScope.user = user;
-            GAuth.getToken().then(function(data){console.debug(data);});
-        },
-        function(data) {
-          // authenticate user at startup of the application
-          $location.path('/login');
-        }
+      function (user) {
+          console.log(user.name + ' is logged in');
+          $location.path('/timesheet');
+      },
+      function() {
+        $location.path('/howitworks');
+      }
     );
   }
 
-  $rootScope.isUserSignedIn = function(){
-      return $rootScope.user;            
-  }
+  $rootScope.isUserSignedIn = JSON.parse(localStorage.getItem('ts-user'));            
+  $rootScope.user = JSON.parse(localStorage.getItem('ts-user'));
 
   // Set a watch on the $routeChangeStart
-  $rootScope.$on('$routeChangeStart', function(evt, next, curr) {
-    console.debug("Roteando de "+curr +"para: "+next);
+  $rootScope.$on("$routeChangeStart", function (event, next, current) {
     if (!$rootScope.isUserSignedIn)
       $location.path('/howitworks');
+  })
 
-  });
 });
-
-
-// Client ID: 483971248715-hva8n0p8q6d3qou8bftesds07do8h321.apps.googleusercontent.com
-// Client Secret: qoifymW6Vwct61-yBnAVtkMH

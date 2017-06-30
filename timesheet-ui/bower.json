@@ -11,8 +11,8 @@
     "angular-loader": "^1.6.4",
     "angular-mocks": "^1.6.4",
     "angular-resource": "^1.6.4",
-    "angular-cookies": "^1.6.4",
     "angular-sanitize": "^1.6.4",
-    "angular-patternfly": "^4.0.0"
+    "angular-patternfly": "^4.0.0",
+    "angular-google-gapi": "~1.0.1"
   }
 }
