@@ -10,6 +10,7 @@ angular.module('timesheet').controller('HowItWorksCtrl', function (CONFIG, GAuth
                         user['access_token'] = token["access_token"];
                         localStorage.setItem('ts-user', JSON.stringify(user));
                     });
+                $rootScope.isUserSignedIn = JSON.parse(localStorage.getItem('ts-user'));
             }
             else{
                 // show a message on screen!

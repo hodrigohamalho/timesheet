@@ -60,7 +60,7 @@ app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location) {
       },
       function() {
         console.log("User is not logged!");
-        $location.path('/#!/howitworks');
+        $location.path('/howitworks');
       }
     );
   }
@@ -71,18 +71,18 @@ app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location) {
   // Set a watch on the $routeChangeStart
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
     if (!$rootScope.isUserSignedIn)
-      $location.path('/#!/howitworks');
+      $location.path('/howitworks');
   })
 });
 
 
-app.service('authInterceptor', function($q) {
+app.service('authInterceptor', function($q, $location) {
     var service = this;
 
     service.responseError = function(response) {
         if (response.status == 401){
             localStorage.removeItem('ts-user');
-            window.location = "/howitworks";
+            $location.path('/howitworks');
         }
         return $q.reject(response);
     };
