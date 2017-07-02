@@ -50,16 +50,17 @@ app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location) {
   GAuth.setClient(CONFIG.CLIENT_ID);
   GAuth.setScope(CONFIG.SCOPES.join(' '));
   
-  var currentUser = localStorage.getItem('ts-user');
+  var currentUser = JSON.parse(localStorage.getItem('ts-user'));
   if(currentUser) {
     GData.setUserId(currentUser['id']);
     GAuth.checkAuth().then(
       function (user) {
           console.log(user.name + ' is logged in');
-          $location.path('/timesheet');
+          $location.path('/#!/timesheet');
       },
       function() {
-        $location.path('/howitworks');
+        console.log("User is not logged!");
+        $location.path('/#!/howitworks');
       }
     );
   }
@@ -70,7 +71,23 @@ app.run(function(CONFIG, GAuth, GApi, GData, $rootScope, $location) {
   // Set a watch on the $routeChangeStart
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
     if (!$rootScope.isUserSignedIn)
-      $location.path('/howitworks');
+      $location.path('/#!/howitworks');
   })
-
 });
+
+
+app.service('authInterceptor', function($q) {
+    var service = this;
+
+    service.responseError = function(response) {
+        if (response.status == 401){
+            localStorage.removeItem('ts-user');
+            window.location = "/howitworks";
+        }
+        return $q.reject(response);
+    };
+});
+
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+}]);
